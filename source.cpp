@@ -1,5 +1,8 @@
+//Raajih Roland
+//CIS 1202.5T1
+//July 22, 2024
 #include <iostream>
-#include <cctype>//
+#include <cctype>
 using namespace std;
 
 
@@ -11,9 +14,18 @@ class invalidRangeException{};
 
 int main()
 {
-
-	char test = 'a';
-	cout << character(test, 1);
+	try
+	{
+		cout << character('?', 5);
+	}
+	catch (invalidCharacterException)
+	{
+		cout << "ERROR. Invalid character";
+	}
+	catch (invalidRangeException)
+	{
+		cout << "ERROR. Invalid offset";
+	}
 
 	return 0;
 }
@@ -24,7 +36,7 @@ char character(char start, int offset)
 
 	if (!isalpha(start))//If start isn't a valid character
 		throw invalidCharacterException();
-	else if (!isalpha(result))//If the offset reaches out of bounds 
+	else if (!isalpha(result) || (islower(start) && isupper(result)) || (isupper(start) && islower(result)))//If the result isn't a letter, or if the offset made the letter switch cases
 		throw invalidRangeException();
 	else
 		return result;
