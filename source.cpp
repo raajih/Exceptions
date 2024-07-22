@@ -16,7 +16,8 @@ int main()
 {
 	try
 	{
-		cout << character('?', 5);
+		cout << character('a', 1) << endl;
+		cout << character('?', 5) << endl;
 	}
 	catch (invalidCharacterException)
 	{
